@@ -1,0 +1,170 @@
+/* MAIN PAGE */
+
+body {
+  background-color: #313443;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 0;
+}
+
+.container {
+  width: auto;
+  height: auto;
+}
+
+.notify_sidebar {
+  box-sizing: border-box;
+  background-color: #63677C;
+  position: fixed;
+  width: 25%;
+  height: 99vh;
+  border-radius: 10px 0 0px 10px;
+
+  padding-top: 7px;
+  padding-left: 1px;
+  padding-right: 1px;
+  padding-bottom: 7px;
+
+  top: 5;
+  left: 2.5;
+
+  overflow: scroll;
+}
+
+.note_box {
+  box-sizing: border-box;
+  display: block;
+  width: 95%;
+  background-color: #313443;
+  border-radius: 10px;
+  color: #D1D2DA;
+  margin: auto;
+
+}
+
+.note_content {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  margin-bottom: 7px;
+
+  text-align: left;
+
+}
+
+.note_content p {
+  margin: 2px;
+}
+
+/*.buttonBox {
+  width: 23.5%;
+  height: 40px;
+  float: right;
+}*/
+
+/*.removeNote {
+  background-color: #63677C;
+  width: 20%;
+  height: 40px;
+
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition-duration: 0.4s;
+
+  float: left;
+}*/
+
+.removeNote:hover {
+  background-color: #9196AD;
+}
+
+.subPageContainer {
+  box-sizing: border-box;
+  width: 74.5%;
+  height: 93vh;
+
+  border-bottom-right-radius: 10px;
+
+  float: right;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.subPageContainer iframe {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  border: none;
+}
+
+.menu {
+  width: 74.5%;
+  height: 40px;
+  float: right;
+  margin-left: 5px;
+}
+
+.menu button {
+  box-sizing: border-box;
+  background-color: #63677C;
+  float: right;
+  border: none;
+  text-decoration: none;
+  height: 100%;
+  width: 50%;
+  color: #D1D2DA;
+
+  transition-duration: 0.4s;
+  outline: none;
+  cursor: pointer;
+}
+.menu button:hover {
+  background-color: #9196AD;
+}
+
+#menuButton1 {
+  border-left: 2px;
+  border-left-style: solid;
+  border-left-color: #313443;
+
+  border-top-right-radius: 10px;
+}
+
+#menubutton2 {
+  border-right: 2px;
+  border-right-style: solid;
+  border-right-color: #313443;
+}
+
+/* SENSORS PAGE */
+.page_container {
+  width: 100%;
+  height: 99.5vh;
+  background-color: #63677C;
+}
+
+.data_container {
+
+}
+
+.chart {
+  width: 500px;
+  height: 500px;
+
+}
+
+#chart1 {
+  background-color: #9196AD;
+  border-radius: 3px;
+}
+
+.data_singlet {
+
+}

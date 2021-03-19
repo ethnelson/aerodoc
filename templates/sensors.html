@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content='sensor_hub' charset='utf-8'>
+  <title>Sensor Data</title>
+  <!-- <link rel='stylesheet' href="{{ url_for('static', filename='css/template.css') }}"></link> -->
+  <link rel='stylesheet' href="template.css" type="text/css">
+<body>
+  <div class="page_container">
+    <div class="data_container">
+      <div class="chart">
+        <canvas id="chart1"></canvas>
+      </div>
+      <div class="data_singlet"></div>
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="jquery.min.js" type="text/javascript"></script>
+  <script src="Chart.bundle.min.js" type="text/javascript"></script>
+  <!--<script src="main.js" type="text/javascript"></script> -->
+  <script type="text/javascript">
+    $(function () {
+      var chartEle = $('#chart1');
+      var options = {
+        type: 'line',
+        data: {
+          labels: ['1', '2', '3', '4', '5', '6'],
+          datasets: [{
+            label: 'data stuffs',
+            data: [12, 15, 16, 19, 30, 31],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)'
+            ]
+          }]
+        }
+      }
+
+
+      var chart = new Chart (chartEle, options);
+
+
+    })(jQuery);
+  </script>
+</body>
+</html>
