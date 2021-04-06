@@ -12,8 +12,10 @@ setup:
 
 
 run:
+	soruce packages/bin/activate && \
 	flask run
 
 clean:
 	py3clean .
 	rm -rf packages
+	rm -rf datadb.db

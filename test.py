@@ -41,7 +41,3 @@ def getDataUpdate():
         return "Error reading database"
     finally:
         db.close()
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
