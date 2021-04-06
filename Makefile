@@ -12,7 +12,7 @@ setup:
 
 
 run:
-	soruce packages/bin/activate && \
+	source packages/bin/activate && \
 	flask run
 
 clean:
