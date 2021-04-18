@@ -7,11 +7,11 @@ setup:
 	python3 -m venv packages
 	source packages/bin/activate && \
 	pip3 install -r requirements.txt
-	export FLASK_APP=test.py
-	export FLASK_ENV=development
 
 
 run:
+	export FLASK_APP=test.py && \
+	export FLASK_ENV=development && \
 	source packages/bin/activate && \
 	flask run
 

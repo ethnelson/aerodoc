@@ -1,22 +1,23 @@
 from flask import Flask, render_template, request
 import sys
+import os
 sys.path.append('scripts/')
 from arduino_comms import Database
 import json
 
 app = Flask(__name__)
 
-
-
 @app.route('/')
 @app.route('/index')
 def index():
-    return ender_template('template.html')
+    return render_template('template.html')
 
 @app.route('/sensors')
 def sensors():
     return render_template('sensors.html')
 
+@app.route('/settings', methods=['GET', 'POST'])
+def settings():
 
 @app.route('/sensors/data', methods=['GET'])
 def getData():

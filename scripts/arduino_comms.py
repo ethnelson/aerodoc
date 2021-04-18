@@ -30,7 +30,6 @@ import time
 # --------- '3' - peristaltic pump #3                                          #
 #                                                                              #
 # -----------------------------------------------------------------------------#
-port = 'COM4'
 
 class Database:
     def __init__(self, name):
@@ -109,7 +108,7 @@ class Monitor:
         self.tunnel = serial.Serial(sPort, 9600)
     # ---------------------------Sensor Reading -------------------------------#
     def ecSensor(self):
-        self.tunnel.write(b'SE')
+        self.tunnel.write(b'SE\n')
         time.sleep(.2)
         data = self.tunnel.readline()
         data = data.decode()
@@ -118,28 +117,28 @@ class Monitor:
         return data
 
     def phSensor(self):
-        self.tunnel.write(b'SP')
+        self.tunnel.write(b'SP\n')
         time.sleep(.2)
         data = self.tunnel.readline()
         data = float(data.encode().rstrip())
         return data
 
     def tmpSensor(self):
-        self.tunnel.write(b'ST')
+        self.tunnel.write(b'ST\n')
         time.sleep(.2)
         data = self.tunnel.readline()
         data = float(data.encode().rstrip())
         return data
 
     def humSensor(self):
-        self.tunnel.write(b'SH')
+        self.tunnel.write(b'SH\n')
         time.sleep(.2)
         data = self.tunnel.readline()
         data = float(data.encode().rstrip())
         return data
 
     def watSensor(self):
-        self.tunnel.write(b'SW')
+        self.tunnel.write(b'SW\n')
         time.sleep(.2)
         data = self.tunnel.readline()
         data = float(data.encode().rstrip())
@@ -158,21 +157,21 @@ class Monitor:
     def lightSwitch(self, state):
         time.sleep(.1)
         if state:
-            self.tunnel.write(b'CFH')
+            self.tunnel.write(b'CFH\n')
         else:
-            self.tunnel.write(b'CFL')
+            self.tunnel.write(b'CFL\n')
 
     def fanSwitch(self, state):
         time.sleep(.1)
         if state:
-            self.tunnel.write(b'CLH')
+            self.tunnel.write(b'CLH\n')
         else:
-            self.tunnel.write(b'CLL')
+            self.tunnel.write(b'CLL\n')
 
     def pumpSwitch(self, pump, state):
         time.sleep(.1)
         message = f'CU{pump}'
         if state:
-            self.tunnel.write(bytes(f'{message}H', 'utf-8'))
+            self.tunnel.write(bytes(f'{message}H\n', 'utf-8'))
         else:
-            self.tunnel.write(bytes(f'{message}L', 'utf-8'))
+            self.tunnel.write(bytes(f'{message}L\n', 'utf-8'))
