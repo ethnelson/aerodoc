@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+<head>
+  <meta content='controlHub' charset='utf-8'>
+  <title>Test</title>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/Chart.bundle.min.js') }}"></script>
+</head>
+<body>
+  <div class='container'>
+    <div class='notify_sidebar'>
+      {% block note %}
+      <img src="{{ url_for('static', filename='img/aerodoc.svg') }}"/>
+      {% endblock %}
+    </div>
+
+    <div class='menuAndContent'>
+      <div class='menu'>
+        <button id="menuButton1" onclick="location.href='{{ url_for('sensors') }}'">Sensor</button>
+        <button id="menuButton2" onclick="location.href='{{ url_for('camera') }}'">Camera</button>
+        <button id="menuButton3" onclick="location.href='{{ url_for('settings') }}'">Settings</button>
+      </div>
+
+      <div class='main_content'>
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+
+
+</body>
+</html>

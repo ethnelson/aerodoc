@@ -1,0 +1,77 @@
+{% extends 'template.html' %}
+
+{% block note %}
+<div class='note_box' id='noteTemp' style="visibility: hidden">
+  <div class='note_content'>
+    <p class='timeStamp'></p>
+    <p class='noteTitle'></p>
+    <p class='noteDescript'></p>
+    <ul>
+      <li class='noteDetail'></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="controlData">
+    <span>
+      Light:
+      <span id='light'>ON</span>
+    </span>
+    <span>
+      Fan:
+      <span id='fan'>OFF</span>
+    </span>
+  </div>
+
+  <div class="data_container">
+    <span class="chart">
+      <canvas id='ecChart'></canvas>
+    </span>
+
+    <span class="chart">
+      <canvas id='phChart'></canvas>
+    </span>
+
+    <span class="chart">
+      <canvas id='tempChart'></canvas>
+    </span>
+
+    <span class="chart">
+      <canvas id='humChart'></canvas>
+    </span>
+  </div>
+  <script> var chart_range = {{ conf.chart_range }}; </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    reqData();
+    setInterval(reqDataUpdate, {{ conf.chart_freq }} * 1000);
+  </script>
+  <script>
+  /* Get notifications from server periodically, based on config              */
+  $(document).ready(function() {
+    setInterval(function () {
+      $.get("{{ url_for('noteUpdate') }}", function(data, status) {
+        data = JSON.parse(data);
+        for (entry in data) {
+          if ($('#latestNote > .note_content > .noteTitle').text() == data[entry]['noteTitle']){
+            $('#latestNote').remove();
+          }
+          var box = $('#noteTemp').clone();
+          $(box).find('.note_content > .timeStamp').text(data[entry]['time'])
+          $(box).find('.note_content > .noteTitle').text(data[entry]['noteTitle']);
+          $(box).find('.note_content > .noteDescript').text(data[entry]['noteDescript']);
+          $(box).find('.note_content > ul > li').text(data[entry]['noteDetail']);
+          $('latestNote').attr('id', 'note_' + $('.notify_sidebar').children.length);
+          $(box).attr('id', 'latestNote')
+                .attr('style', 'visibility: visible;')
+                .prependTo('.notify_sidebar');
+          $(box).fadeOut(100).fadeIn(100);
+        }
+      })
+    }, {{ conf.chart_freq }} * 1000)
+  });
+  </script>
+
+{% endblock %}
