@@ -1,0 +1,178 @@
+{% extends 'template.html' %}
+<img src="{{ url_for('static', filename='img/aerodoc.svg') }}"/>
+{% block content %}
+
+<!-- ===========================================================================
+                                    GRAPHS
+     ======================================================================= -->
+<form action="{{ url_for('settings') }}" method='POST'>
+  <div>
+    <h1> Graphs </h1>
+    <div>
+      <label for="chart_freq">Frequency of chart updates (minutes) </label>
+      <div>
+        <input type="range" id="chart_freq" name="chart_freq" min="1" max="60"
+           step="1" oninput="this.form.chart_freqNum.value=this.value"
+           value="{{ conf.chart_freq }}">
+        <input type="number" name="chart_freqNum" min="1" max="60"
+           oninput="this.form.chart_freq.value=this.value"
+           value="{{ conf.chart_freq }}">
+      </div>
+    </div>
+
+    <div>
+      <label for="chart_range">Range of data points to display </label>
+      <div>
+        <input type="range" id="chart_range" name="chart_range" min="10" max="500"
+             step="1" oninput="this.form.chart_rangeNum.value=this.value"
+             value="{{ conf.chart_range }}">
+        <input type="number" name="chart_rangeNum" min="10" max="500"
+             oninput="this.form.chart_range.value=this.value"
+             value="{{ conf.chart_range }}">
+      </div>
+    </div>
+  </div>
+
+<div>
+<!-- ===========================================================================
+                                 CONTROLLER
+     ======================================================================= -->
+<h1> Controller </h1>
+<!-- ============================ LIGHT CYCLE ============================== -->
+<h3> Light Cycle </h3>
+  <div>
+    <label for="light_start">Schedule light ON</label>
+    <input type="time" id="light_start" name="light_start"
+           value="{{ conf.light_start }}">
+  </div>
+
+  <div>
+    <label for="light_stop">Schedule light OFF</label>
+    <input type="time" id="light_stop" name="light_stop"
+          value="{{ conf.light_stop }}">
+  </div>
+<!-- ============================ PH RANGES ==============================   -->
+<h3> PH </h3>
+  <div>
+    <label for="ph_low">PH Lower Limit</label>
+    <div>
+    <input type="range" id="ph_low" name="ph_low" min="0" max="14" step=".25"
+            oninput="this.form.ph_lowNum.value=this.value"
+            value="{{ conf.ph_low }}">
+      <input type="number" id="ph_lowNum" name="ph_lowNum" min="0" max="14"
+             step=".25" oninput="this.form.phDownLim.value=this.value"
+             value="{{ conf.ph_low }}">
+    </div>
+  </div>
+
+  <div>
+    <label for="ph_up">PH Upper Limit</label>
+    <div>
+      <input type="range" id="ph_up" name="ph_up" min="0" max="14" step=".25"
+            oninput="this.form.ph_upNum.value=this.value"
+            value="{{ conf.ph_up }}">
+      <input type="number" id="ph_upNum" name="ph_upNum" min="0" max="14"
+             step=".25" oninput="this.form.ph_up.value=this.value"
+             value="{{ conf.ph_up }}">
+    </div>
+  </div>
+
+
+<!-- ============================= EC RANGES =============================== -->
+<h3> Electrical Conductivity </h3>
+  <div>
+    <label for="ec_low">EC Lower Limit (mS/cm)</label>
+    <div>
+      <input type="range" id="ec_low" name="ec_low" min="0" max="2" step=".1"
+            oninput="this.form.ec_lowNum.value=this.value"
+            value="{{ conf.ec_low }}">
+      <input type="number" id="ec_lowNum" name="ec_lowNum" min="0" max="2"
+             step=".1" oninput="this.form.ec_low.value=this.value"
+             value="{{ conf.ec_low }}">
+    </div>
+  </div>
+
+  <div>
+    <label for="ec_up">EC Upper Limit (mS/cm)</label>
+    <div>
+      <input type="range" id="ec_up" name="ec_up" min="0" max="2" step=".1"
+            oninput="this.form.ec_upNum.value=this.value"
+            value="{{ conf.ec_up }}">
+      <input type="number" id="ec_upNum" name="ec_upNum" min="0" max="2"
+             step=".1" oninput="this.form.ec_up.value=this.value"
+             value="{{ conf.ec_up }}">
+    </div>
+  </div>
+<!-- ========================== TEMPERATURE RANGE ========================== -->
+<h3> Temperature </h3>
+  <div>
+    <label for="temp_low">Temperature Lower Limit (C)</label>
+    <div>
+      <input type="range" id="temp_low" name="temp_low" min="20" max="35"
+             step="1" oninput="this.form.temp_lowNum.value=this.value"
+             value="{{ conf.temp_low }}">
+      <input type="number" id="temp_lowNum" name="temp_lowNum" min="20" max="35"
+             oninput="this.form.temp_low.value=this.value"
+             value="{{ conf.temp_low }}">
+    </div>
+  </div>
+
+  <div>
+    <label for="temp_up">Temperature Upper Limit (C)</label>
+    <div>
+      <input type="range" id="temp_up" name="temp_up" min="20" max="35"
+             step="1" oninput="this.form.temp_upNum.value=this.value"
+             value="{{ conf.temp_up }}">
+      <input type="number" id="temp_upNum" name="temp_upNum" min="20" max="35"
+             oninput="this.form.temp_up.value=this.value"
+             value="{{ conf.temp_up }}">
+    </div>
+  </div>
+<!-- ========================== HUMIDITY RANGE ============================= -->
+<h3> Humidity </h3>
+  <div>
+    <label for="hum_low">Relative Humidity Lower Limit (%)</label>
+    <div>
+      <input type="range" id="hum_low" name="hum_low" min="0" max="100"
+             step="1" oninput="this.form.hum_lowNum.value=this.value"
+             value="{{ conf.hum_low }}">
+      <input type="number" id="hum_lowNum" name="hum_lowNum" min="0" max="100"
+             oninput="this.form.hum_low.value=this.value"
+             value="{{ conf.hum_low }}">
+    </div>
+  </div>
+
+  <div>
+    <label for="hum_up">Relative Humidity Upper Limit (%)</label>
+    <div>
+      <input type="range" id="hum_up" name="hum_up" min="0" max="100"
+             step="1" oninput="this.form.hum_upNum.value=this.value"
+             value="{{ conf.hum_up }}">
+      <input type="number" id="hum_upNum" name="hum_upNum" min="0" max="100"
+             oninput="this.form.hum_up.value=this.value"
+             value="{{ conf.hum_up }}">
+    </div>
+  </div>
+</div>
+<!-- ===========================================================================
+                                      CAMERA
+     ======================================================================= -->
+<div>
+  <h1> Camera </h1>
+  <div>
+    <label for="image_freq">Rate of camera update (frames/second)</label>
+    <div>
+      <input type="range" id="image_freq" name="image_freq" min="1" max="20" step="1"
+             oninput="this.form.image_freqNum.value=this.value"
+             value="{{ conf.image_freq }}">
+      <input type="number" id="image_freqNum" name="image_freqNum" min="1" max="20"
+            oninput="this.form.image_freq.value=this.value"
+            value="{{ conf.image_freq }}">
+    </div>
+  </div>
+</div>
+<!-- ============================== SAVE BUTTON============================= -->
+<input type="submit" value="Save">
+
+</form>
+{% endblock %}

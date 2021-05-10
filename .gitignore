@@ -1,2 +1,7 @@
 packages
 __pycache__
+scripts/__pychache__
+datadb.db
+dbBuffer.p
+monitor.p
+noteBuffer.p

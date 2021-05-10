@@ -1,0 +1,17 @@
+{% extends 'template.html' %}
+
+{% block note %}
+<div class='note_box' id='noteTemp' style="visibility: hidden">
+  <div class='note_content'>
+    <p class='timeStamp'></p>
+    <p class='noteTitle'></p>
+    <p class='noteDescript'></p>
+    <ul>
+      <li class='noteDetail'></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+  <img src="{{ url_for('camera_feed') }}">
+{% endblock %}
