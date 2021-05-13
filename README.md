@@ -1,4 +1,6 @@
 # AeroDoc
+A tool developed in part of a research project for automating an aeroponics gardening system.
+
 ## Table of Contents
 * [Quick Start](#quick-start)
 * [What's included](#content)
