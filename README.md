@@ -6,6 +6,7 @@ A tool developed in part of a research project for automating an aeroponics gard
 * [What's included](#content)
 * [Dependencies](#dependencies)
 * [Building a System](#building-a-system)
+* [Web Interface](#web-interface)
 * [Credits](#credits)
 
 ## Quick Start
@@ -91,8 +92,19 @@ After piecing the hardware together, you can clone over the repository to the Ra
 3. Run `make run`
 4. Connect to the web-interface on the Raspberry Pi's IP: 192.168... :5000
 
+## Web Interface
+Once you open the web-interface, you'll be greeted with a view of several charts and a notification feed.
+> ![Main Page](static/img/AeroDocGraphScreen.png)
 
-
+This web interface has a range of settings that can be configured for this system including:
+1. Camera settings
+    > ![Camera settings](static/img/AeroDocCameraSetting.png)
+2. Graph Settings
+    > ![Graph settings](static/img/AeroDocGraphSettings.png)
+3. Light Cycle Settings
+    > ![Light Cycle](static/img/AeroDocLightCycleSettings.png)
+4. Various Threshold Settings
+    > ![Thresholds](static/img/AeroDocThresholds.png)
 
 
 ## Credits
